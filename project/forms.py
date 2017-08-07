@@ -3,8 +3,8 @@
 
 from flask_wtf import Form
 from wtforms import StringField, DateField, IntegerField, \
-    SelectField
-from wtforms.validators import DataRequired, Length, EqualTo
+    SelectField, PasswordField
+from wtforms.validators import DataRequired, Length, EqualTo, Email
 
 
 class RegisterForm(Form):
@@ -14,16 +14,14 @@ class RegisterForm(Form):
     )
     email = StringField(
         'Email',
-        validators=[DataRequired(), Length(min=6, max=40)]
+        validators=[DataRequired(), Email(), Length(min=6, max=40)]
     )
     password = PasswordField(
         'Password',
-        validators=[DataRequired(), Length(min=6, max=25)]
-    )
+        validators=[DataRequired(), Length(min=6, max=40)])
     confirm = PasswordField(
         'Repeat Password',
-        validators=[DataRequired(), EqualTo(
-            'password', message='passwords must match')]
+        validators=[DataRequired(), EqualTo('password')]
     )
 
 
@@ -32,7 +30,7 @@ class LoginForm(Form):
         'Username',
         validators=[DataRequired()]
     )
-    password = StringField(
+    password = PasswordField(
         'Password',
         validators=[DataRequired()]
     )
