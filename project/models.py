@@ -1,15 +1,14 @@
 from views import db
-
 import datetime
 
 
 class User(db.Model):
-    __tablename__ = "users"
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Integer, unique=True, nullable=False)
-    email = db.Column(db.Integer, unique=True, nullable=False)
-    password = db.Column(db.Integer, nullable=False)
-    tasks = db.relationship('Task', backref="poster")
+    name = db.Column(db.String, unique=True, nullable=False)
+    email = db.Column(db.String, unique=True, nullable=False)
+    password = db.Column(db.String, nullable=False)
+    tasks = db.relationship('Task', backref='poster')
 
     def __init__(self, name=None, email=None, password=None):
         self.name = name
@@ -17,13 +16,11 @@ class User(db.Model):
         self.password = password
 
     def __repr__(self):
-        return '<name {0}>'.format(self.name)
+        return '<name {0}'.format(self.name)
 
 
 class Task(db.Model):
-
-    __tablename__ = "tasks"
-
+    __tablename__ = 'tasks'
     task_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     due_date = db.Column(db.Date, nullable=False)
@@ -41,4 +38,4 @@ class Task(db.Model):
         self.user_id = user_id
 
     def __repr__(self):
-        return '<name {0}>'.format(self.name)
+        return '<User {0}'.format(self.name)

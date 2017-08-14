@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Task Management</title>
-  <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+  <title>Welcome to FlaskTaskr!!</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 
 <body>
   <div class="page">
-    {% for message in messages %}
-    <div class="flash">{{message}}</div>
+
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
     {% endfor %} {% if error %}
-    <div class="error"><strong>Error</strong>{{error}}</div>
+    <div class="error"><strong>Error:</strong> {{ error }}</div>
     {% endif %}
+
     <br> {% block content %} {% endblock %}
+
   </div>
 </body>
 
