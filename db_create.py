@@ -1,5 +1,5 @@
-import sqlite3
-from _config import DATABASE_PATH
+# import sqlite3
+# from _config import DATABASE_PATH
 
 # with sqlite3.connect(DATABASE_PATH) as connection:
 #     c = connection.cursor()
@@ -18,11 +18,13 @@ from _config import DATABASE_PATH
 #         'VALUES("Finish Real Python Course 2", "03/25/2015", 10, 1)'
 #     )
 
-from views import db
-from models import Task, User
-from datetime import date
+# from views import db
+# from models import Task, User
+# from datetime import date
+from project import db
 
-# create
+
+# create the database and the db table
 db.create_all()
 
 # db.session.add(Task("Finish the tutorial", date(2014, 12, 12), 10, 1))

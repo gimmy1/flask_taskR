@@ -1,2 +1,4 @@
 from project import app
-app.run(debug=True)
+# never have true for production. True also prevents 500 error from popping up.
+# app.run(debug=True)
+app.run()
